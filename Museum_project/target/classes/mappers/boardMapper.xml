@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ <mapper namespace="BoardMapper">
+  <insert id="nAdd" parameterType="NoticeVO">
+    insert into tbl_notice(nno, ntitle, nwriter, ncontent, imgfile) 
+    values(seq_notice_nno.nextval, #{ntitle}, #{nwriter}, #{ncontent}, #{imgfile})
+  </insert>
+  <select id="nlist" resultType="NoticeVO">
+    select nno, ntitle, nwriter, nregdate, checkCount from tbl_notice
+  </select>
+  <select id="ndetail" parameterType="java.lang.Integer" resultType="NoticeVO">
+    select * from tbl_notice where nno = #{nno}
+  </select>
+  <update id="nUpCount" parameterType="java.lang.Integer">
+    update tbl_notice set checkCount = checkCount + 1 where nno = #{nno}
+  </update>
+ </mapper>
+ 
