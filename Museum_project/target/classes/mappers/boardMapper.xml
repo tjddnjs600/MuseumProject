@@ -8,15 +8,27 @@
     insert into tbl_notice(nno, ntitle, nwriter, ncontent, imgfile) 
     values(seq_notice_nno.nextval, #{ntitle}, #{nwriter}, #{ncontent}, #{imgfile})
   </insert>
-  <select id="nlist" resultType="NoticeVO">
-    select nno, ntitle, nwriter, nregdate, checkCount from tbl_notice
+  <select id="nlist" parameterType="Criterion" resultType="NoticeVO">
+    <![CDATA[
+    SELECT nno, ntitle, nwriter, nregdate, checkCount 
+				from (SELECT /*+INDEX_DESC(TBL_NOTICE notice_pk)*/
+				rownum AS rn, nno, ntitle, nwriter, nregdate, checkCount
+				FROM TBL_NOTICE 
+				WHERE rownum <= #{pageNum} * #{amount})
+				WHERE rn > (#{pageNum}-1) * #{amount}
+    ]]>
+  </select>
+  <select id="getTotal" resultType="java.lang.Integer">
+    <![CDATA[
+    SELECT count(nno) FROM TBL_NOTICE WHERE nno > 0
+    ]]>
   </select>
   <select id="ndetail" parameterType="java.lang.Integer" resultType="NoticeVO">
     select * from tbl_notice where nno = #{nno}
   </select>
   <select id="newList" resultType="NoticeVO">
   <![CDATA[
-    SELECT nno, ntitle, nregdate FROM TBL_NOTICE WHERE rownum < 6 ORDER BY nno desc
+    SELECT /*+INDEX_DESC(TBL_NOTICE notice_pk)*/ ntitle, nregdate FROM TBL_NOTICE WHERE rownum < 6
   ]]>
   </select>
   <update id="nUpCount" parameterType="java.lang.Integer">

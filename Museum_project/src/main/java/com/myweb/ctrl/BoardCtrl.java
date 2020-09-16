@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.myweb.domain.Criterion;
 import com.myweb.domain.NoticeVO;
+import com.myweb.domain.PagingVO;
 import com.myweb.service.BoardService;
 
 @Controller
@@ -39,8 +41,10 @@ public class BoardCtrl {
 	}
 	
 	@GetMapping("/notice/nlist")
-	public void nlist(Model model) {
-		model.addAttribute("nlist", bsv.getNList());
+	public void nlist(Model model, Criterion cri) {
+		model.addAttribute("nlist", bsv.getNList(cri));
+		int totalCount = bsv.getTotal();
+		model.addAttribute("pgvo", new PagingVO(totalCount,cri));
 	}
 	
 	@ResponseBody

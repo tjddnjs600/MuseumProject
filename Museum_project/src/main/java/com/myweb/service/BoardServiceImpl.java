@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.myweb.domain.Criterion;
 import com.myweb.domain.NoticeVO;
 import com.myweb.persistence.BoardDAO;
 
@@ -24,8 +25,8 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	@Override
-	public List<NoticeVO> getNList() {
-		return bdao.getNoticeList();
+	public List<NoticeVO> getNList(Criterion cri) {
+		return bdao.getNoticeList(cri);
 	}
 
 	@Override
@@ -41,6 +42,11 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public List<NoticeVO> getNewList() {
 		return bdao.getNewNoticeList();
+	}
+
+	@Override
+	public int getTotal() {
+		return bdao.noticeGetTotalCount();
 	}
 
 	

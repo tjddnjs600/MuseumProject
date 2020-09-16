@@ -70,6 +70,26 @@
 					<li class="list-group-item"><a href="/board/notice/regist">글등록하기</a></li>
 				</ul>
 			</c:if>
+			
+			<ul class="pagination">
+			   <c:if test="${pgvo.prev }">
+	        <li class="page-item">
+	         <a class="page-link" href="/board/notice/nlist?pageNum=${pgvo.startPageNum - 1 }&amount=${pgvo.cri.amount }">Prev</a>
+	        </li>
+	       </c:if>
+	
+	       <c:forEach begin="${pgvo.startPageNum }" end="${pgvo.endPageNum }" var="i">
+		      <li class="page-item ${pgvo.cri.pageNum == i ? 'active':'' }">
+		       <a class="page-link" href="/board/notice/nlist?pageNum=${i }&amount=${pgvo.cri.amount }">${i }</a>
+		      </li>
+		     </c:forEach>
+	   
+	      <c:if test="${pgvo.next }">
+	        <li class="page-item">
+	         <a class="page-link" href="/board/notice/nlist?pageNum=${pgvo.endPageNum + 1 }&amount=${pgvo.cri.amount }">Next</a>
+	        </li>
+	      </c:if>  
+      </ul>
 		</div>
 	</div>
 </div>

@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import com.myweb.domain.Criterion;
 import com.myweb.domain.NoticeVO;
 
 @Repository
@@ -25,8 +26,8 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	@Override
-	public List<NoticeVO> getNoticeList() {
-		return sql.selectList(ns+"nlist");
+	public List<NoticeVO> getNoticeList(Criterion cri) {
+		return sql.selectList(ns+"nlist", cri);
 	}
 
 	@Override
@@ -42,6 +43,11 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public List<NoticeVO> getNewNoticeList() {
 		return sql.selectList(ns+"newList");
+	}
+
+	@Override
+	public int noticeGetTotalCount() {
+		return sql.selectOne(ns+"getTotal");
 	}
 
 
