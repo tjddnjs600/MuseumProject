@@ -21,6 +21,7 @@
 <script src="/resources/js/jquery-3.4.1.min.js"></script>
 <script src="/resources/js/popper.min.js"></script>
 <script src="/resources/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
 <link href='/resources/css/core/main.css' rel='stylesheet' />
 <link href='/resources/css/daygrid/main.css' rel='stylesheet' />

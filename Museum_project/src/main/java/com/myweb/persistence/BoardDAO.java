@@ -12,5 +12,7 @@ public interface BoardDAO {
 	public int noticeUpCount(int nno);
 
 	public NoticeVO noticeSelectOne(int nno);
+	
+	public List<NoticeVO> getNewNoticeList();
 
 }

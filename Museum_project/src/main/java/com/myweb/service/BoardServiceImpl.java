@@ -38,5 +38,10 @@ public class BoardServiceImpl implements BoardService{
 		return bdao.noticeSelectOne(nno);
 	}
 
+	@Override
+	public List<NoticeVO> getNewList() {
+		return bdao.getNewNoticeList();
+	}
+
 	
 }

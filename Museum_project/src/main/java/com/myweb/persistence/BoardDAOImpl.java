@@ -39,5 +39,10 @@ public class BoardDAOImpl implements BoardDAO{
 		return sql.selectOne(ns+"ndetail", nno);
 	}
 
+	@Override
+	public List<NoticeVO> getNewNoticeList() {
+		return sql.selectList(ns+"newList");
+	}
+
 
 }

@@ -9,4 +9,5 @@ public interface BoardService {
 	public List<NoticeVO> getNList();
 	public int nUpCount(int nno);
 	public NoticeVO nSelectOne(int nno);
+	public List<NoticeVO> getNewList();
 }

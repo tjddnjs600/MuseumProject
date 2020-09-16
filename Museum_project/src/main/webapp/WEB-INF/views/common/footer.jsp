@@ -33,10 +33,27 @@
   </footer>
   
 <script>
-let msg = '<c:out value="${msg}"/>';
-if (msg != '') {
-  alert(msg);
-}
+$(function() {
+	
+	$.getJSON("/board/newList.json", function(res) {
+		console.log(res);
+		let ulTag = '<ul class="notice-wrap" >';
+		for (let nvo of res) {
+			console.log(nvo.nno);
+			ulTag += '<li><a href="/board/notice/detail?nno='+nvo.nno+'">'+nvo.ntitle+'</a><span>'+moment(nvo.nregdate).format('YYYY-MM-DD')+'</span></li>';
+		}
+		ulTag += '</ul>';
+		$("#newNotice").append(ulTag);
+	}).fail(function() {
+		alert("가져오기 실패");
+	});
+	
+	
+	let msg = '<c:out value="${msg}"/>';
+	if (msg != '') {
+	  alert(msg);
+	}	
+});
 </script>  
 
 </body>

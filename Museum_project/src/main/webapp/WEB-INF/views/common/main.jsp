@@ -79,16 +79,16 @@
     <div class="row clearfix">
       <div class="board-zone">
         <div class="inner">
-                    <h2>공지사항</h2>
-                    <ul class="notice-wrap">
+                    <h2 id="newNotice">공지사항</h2>
+                    <!-- <ul class="notice-wrap" >
                         <li>
                           <a href="#">공지사항</a>
                           <span>2020.06.22</span>
                         </li>
-                    </ul>
-          <a href="#">
+                    </ul> -->
+          <a href="/board/notice/nlist">
             <img class="more" alt="more" src="resources/img/more.png">
-                    </a>
+          </a>
         </div>
       </div>
       

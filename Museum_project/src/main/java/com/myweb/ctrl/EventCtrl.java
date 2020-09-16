@@ -35,7 +35,7 @@ public class EventCtrl {
 	@PostMapping("/addevent")
 	public String addEvent(EventVO evo) {
 		evc.addEvent(evo);
-		return "redirect:/booking/calendar";
+		return "redirect:/event/calendar";
 	}
 	
 

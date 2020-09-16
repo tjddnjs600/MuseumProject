@@ -22,7 +22,14 @@ public class NoticeVO {
 		this.imgfile = imgfile;
 	}
 
-	
+	//new List
+	public NoticeVO(int nno, String ntitle, Date nregdate) {
+		this.nno = nno;
+		this.ntitle = ntitle;
+		this.nregdate = nregdate;
+	}
+
+
 	//list
 	public NoticeVO(int nno, String ntitle, String nwriter, Date nregdate, int checkcount) {
 		this.nno = nno;
